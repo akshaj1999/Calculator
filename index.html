@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script> 
+window.onload = function() {
+  document.getElementById("result").focus();
+};
+         function dis(val) 
+          { 
+              document.getElementById("result").value+=val ;
+              document.getElementById("result").focus();
+          }
+         
+          function back()
+          {
+              let x = document.getElementById("result").value;
+              x = x.substring(0,x.length-1);
+              document.getElementById("result").value = x;
+              document.getElementById("result").focus();
+          }
+        
+         function solve() 
+         { 
+             let x = document.getElementById("result").value ;
+             let y = eval(x) ;
+             document.getElementById("result").value = y ;
+             document.getElementById("result").focus();
+         } 
+           
+         function clr() 
+         { 
+             document.getElementById("result").value = "" ;
+             document.getElementById("result").focus();
+         } 
+         
+         function unicharcode(event) 
+         {
+            if (event.which == 13 || event.keyCode == 13)
+            {
+                solve();
+                document.getElementById("result").focus();
+                return false;
+            }
+            document.getElementById("result").focus();
+            return true;
+         }
+     </script>
+     <style type="text/css">
+        td
+        {
+            padding:5px;
+        }
+        </style>
+</head>
+<body style="background-color: #1E1B1B;margin: 0px;overflow: hidden;" class="jumbotron jumbotron-fluid">
+    <form autocomplete="off" name="calculator" style=" width: 300px;margin: 0 auto;">
+        <table>
+            <tr>
+               <td>
+                  <input type="text" name="display" class="form-control form-control-lg" id="result" style="background-color: #1E1B1B;width: 215px;height: 100px;"  onkeypress="return unicharcode(event)">
+                 </td>
+            </tr>
+        </table>
+        <table>
+           <tr>
+            <td> <button type="button" class="btn btn-secondary btn-lg" style ="width:107px" onclick="back()"><-</button></td>
+            <td> <button type="button" class="btn btn-secondary btn-lg" style ="width:100px" onclick="dis('.')">.</button></td>
+           </tr>
+        </table>
+        <table >
+           <tr>
+              <td><button type="button" class="btn btn-secondary btn-lg" onclick="dis('1')">1</button></td>
+              <td><button type="button" class="btn btn-secondary btn-lg" onclick="dis('2')">2</button></td>
+              <td><button type="button" class="btn btn-secondary btn-lg" onclick="dis('3')">3</button></td>
+              <td><button type="button" class="btn btn-secondary btn-lg" onclick="dis('+')">+</button></td>
+           </tr>
+           <tr>
+            <td><button type="button" class="btn btn-secondary btn-lg" onclick="dis('4')">4</button></td>
+            <td><button type="button" class="btn btn-secondary btn-lg" onclick="dis('5')">5</button></td>
+            <td><button type="button" class="btn btn-secondary btn-lg" onclick="dis('6')">6</button></td>
+            <td><button type="button" class="btn btn-secondary btn-lg" onclick="dis('-')">-</button></td>
+           </tr>
+           <tr>
+            <td><button type="button" class="btn btn-secondary btn-lg" onclick="dis('7')">7</button></td>
+            <td><button type="button" class="btn btn-secondary btn-lg" onclick="dis('8')">8</button></td>
+            <td><button type="button" class="btn btn-secondary btn-lg" onclick="dis('9')">9</button></td>
+            <td><button type="button" class="btn btn-secondary btn-lg" onclick="dis('*')">*</button></td>
+           </tr>
+           <tr>
+            <td><button type="button" class="btn btn-secondary btn-lg" onclick="clr()">c</button></td>
+            <td><button type="button" class="btn btn-secondary btn-lg" onclick="dis('0')">0</button></td>
+            <td><button type="button" class="btn btn-secondary btn-lg" onclick="solve()">=</button></td>
+            <td><button type="button" class="btn btn-secondary btn-lg" onclick="dis('/')">/</button></td>   
+        </tr>
+        </table>
+     </form>
+</body>
+</html>
